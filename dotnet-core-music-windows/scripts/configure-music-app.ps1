@@ -42,5 +42,5 @@ Start-Process 'C:\Program Files\dotnet\dotnet.exe' -ArgumentList 'c:\music\Music
 # Configure iis
 Remove-WebSite -Name "Default Web Site"
 Set-ItemProperty IIS:\AppPools\DefaultAppPool\ managedRuntimeVersion ""
-New-Website -Name "MusicStore" -Port 80 -PhysicalPath C:\music\ -ApplicationPool DefaultAppPool
+New-Website -Name "MusicStore" -Port 80 -PhysicalPath C:\music\ -ApplicationPool DefaultAppPool -force
 & iisreset
