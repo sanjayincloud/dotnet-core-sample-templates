@@ -11,7 +11,7 @@ Param (
 
 # Firewall
 netsh advfirewall firewall add rule name="http" dir=in action=allow protocol=TCP localport=80
-
+Set-NetFirewallProfile -Profile Public,Private -Enabled False
 # Folders
 New-Item -ItemType Directory c:\temp
 New-Item -ItemType Directory c:\music
@@ -44,3 +44,4 @@ Remove-WebSite -Name "Default Web Site"
 Set-ItemProperty IIS:\AppPools\DefaultAppPool\ managedRuntimeVersion ""
 New-Website -Name "MusicStore" -Port 80 -PhysicalPath C:\music\ -ApplicationPool DefaultAppPool -force
 & iisreset
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
